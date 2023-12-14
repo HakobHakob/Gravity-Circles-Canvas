@@ -51,16 +51,16 @@ Before running the project, compile TypeScript files.
 
 1. **Open index.html:**
 
-Open the index.html file in your preferred web browser.
+    Open the index.html file in your preferred web browser.
 
 2. **Interact with the Animation:**
 
-Click on the canvas or existing circles to spawn new circles.
-Observe the gravity effect and circle movements.
+    Click on the canvas or existing circles to spawn new circles.
+    Observe the gravity effect and circle movements.
 
 3. **Explore and Have Fun!**
 
-Feel free to explore the code, make modifications, and experiment with different configurations.
+    Feel free to explore the code, make modifications, and experiment with different configurations.
 
 ## Contributing
 
