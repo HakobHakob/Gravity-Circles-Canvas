@@ -25,7 +25,7 @@ This project creates a gravity-based animation with circles on an HTML canvas. C
 
 1.  **Navigate to the Project Directory:**
 
-    cd gravity-circles
+    cd gravity-circles-canvas
 
 1.  **Install Dependencies:**
 
