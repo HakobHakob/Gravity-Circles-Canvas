@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#title {
+  position: absolute;
+  color: violet;
+  font-size: 20px;
+  font-weight: 400;
+  animation: mymove 1.5s infinite;
+  animation-fill-mode: infinite;
+}
+
+@keyframes mymove {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100vh;
+  position: absolute;
+  display: block;
+  background-image: url("https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/4620156/1500/880/m1/fpnw/wm0/bg-.jpg?1529306941&s=a9efc6c60a86bb4fb7f0df5edab3a1bf");
+  background-size: cover;
+}
