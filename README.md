@@ -52,13 +52,16 @@ Before running the project, compile TypeScript files.
 1. **Open index.html:**
 
     Open the index.html file in your preferred web browser.
+   
+    After compiling, make sure that the first line of the typescript_js/script.js file looks like this:
+    import { getRandomValue, getRandomColor, createAudio } from "./util.js"
 
-2. **Interact with the Animation:**
+3. **Interact with the Animation:**
 
     Click on the canvas or existing circles to spawn new circles.
     Observe the gravity effect and circle movements.
 
-3. **Explore and Have Fun!**
+4. **Explore and Have Fun!**
 
     Feel free to explore the code, make modifications, and experiment with different configurations.
 
