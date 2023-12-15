@@ -43,11 +43,13 @@ const createCircle = (x, y, radius, color) => {
       x += xDelta
       if (x + radius >= circlesData.canvasWidth) {
         isMoving = false
+        createAudio()
       }
     } else if (!isMoving) {
       x -= xDelta
       if (x - radius <= 0) {
         isMoving = true
+        createAudio()
       }
     }
     draw()

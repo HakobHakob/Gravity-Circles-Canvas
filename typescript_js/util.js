@@ -3,9 +3,16 @@ const variablesObj = {
   audioURLs: [
     "https://www.fesliyanstudios.com/play-mp3/5668",
     "https://www.fesliyanstudios.com/play-mp3/2963",
-    "https://www.fesliyanstudios.com/play-mp3/7005",
     "https://www.fesliyanstudios.com/play-mp3/7008",
     "https://www.fesliyanstudios.com/play-mp3/2411",
+    "https://www.fesliyanstudios.com/play-mp3/7007",
+    "https://www.fesliyanstudios.com/play-mp3/7012",
+    "https://www.fesliyanstudios.com/play-mp3/7014",
+    "https://www.fesliyanstudios.com/play-mp3/3518",
+    "https://www.fesliyanstudios.com/play-mp3/5460"
+
+
+
   ],
 }
 export const getRandomValue = (valuesArrName) => {
