@@ -41,12 +41,14 @@ export const createAudio = (
   }
 
   audio.customPlay = () => {
+    audio.currentTime = 0
     audio.play()
   }
 
   audio.src = src || getRandomValue("audioURLs")
 
   audio.addEventListener("canplaythrough", () => {
+    audio.currentTime = 0
     audio.play()
   })
 
