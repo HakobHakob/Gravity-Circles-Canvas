@@ -34,7 +34,6 @@ export const createAudio = (src) => {
   }
   audio.src = src || getRandomValue("audioURLs")
   audio.addEventListener("canplaythrough", () => {
-    audio.currentTime = 0
     audio.play()
   })
   return audio
