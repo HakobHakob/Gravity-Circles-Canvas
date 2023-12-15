@@ -10,7 +10,7 @@ const variablesObj = {
     "https://www.fesliyanstudios.com/play-mp3/7012",
     "https://www.fesliyanstudios.com/play-mp3/7014",
     "https://www.fesliyanstudios.com/play-mp3/3518",
-    "https://www.fesliyanstudios.com/play-mp3/5460"
+    "https://www.fesliyanstudios.com/play-mp3/5460",
   ],
 }
 

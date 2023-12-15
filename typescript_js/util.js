@@ -1,3 +1,4 @@
+// https://www.fesliyanstudios.com/royalty-free-sound-effects-download/
 const variablesObj = {
   radiusValues: [30, 40, 50, 60, 70, 80, 90, 100],
   audioURLs: [
@@ -9,10 +10,7 @@ const variablesObj = {
     "https://www.fesliyanstudios.com/play-mp3/7012",
     "https://www.fesliyanstudios.com/play-mp3/7014",
     "https://www.fesliyanstudios.com/play-mp3/3518",
-    "https://www.fesliyanstudios.com/play-mp3/5460"
-
-
-
+    "https://www.fesliyanstudios.com/play-mp3/5460",
   ],
 }
 export const getRandomValue = (valuesArrName) => {
@@ -31,10 +29,12 @@ export const getRandomColor = () => {
 export const createAudio = (src) => {
   const audio = new Audio(src || getRandomValue("audioURLs"))
   audio.customPlay = () => {
+    audio.currentTime = 0
     audio.play()
   }
   audio.src = src || getRandomValue("audioURLs")
   audio.addEventListener("canplaythrough", () => {
+    audio.currentTime = 0
     audio.play()
   })
   return audio
