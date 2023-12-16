@@ -1,4 +1,9 @@
-import { getRandomValue, getRandomColor, createAudio } from "./util.js"
+import {
+  getRandomValue,
+  getRandomColor,
+  createAudio,
+  clonedObjectData,
+} from "./util.js"
 if (!window.requestAnimationFrame) {
   window.requestAnimationFrame = (callback) => {
     return setTimeout(callback, 1000 / 60)
@@ -16,38 +21,53 @@ const circlesData = {
   gravity: 0.8,
   radius: 0,
   color: "",
+  velocityY: 0,
+  xDelta: 1,
+  isMoving: true,
+  isCircleClicked: false,
   circles: [],
 }
-const createCircle = (x, y, radius, color) => {
-  let velocityY = 0
-  let xDelta = 1
-  let isMoving = true
-  let isCircleClicked = false
+const clonedCirclesData = clonedObjectData(circlesData)
+const createCircle = () => {
+  let {
+    canvasWidth,
+    canvasHeight,
+    xPos,
+    yPos,
+    gravity,
+    radius,
+    color,
+    velocityY,
+    xDelta,
+    isMoving,
+    isCircleClicked,
+  } = clonedCirclesData
+  xDelta = getRandomValue("randomVelocityValues")
   const draw = () => {
     ctx.beginPath()
-    ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+    ctx.arc(xPos, yPos, radius, 0, Math.PI * 2, false)
     ctx.fillStyle = color
     ctx.fill()
     ctx.closePath()
   }
   const update = () => {
     // Gravity effect
-    velocityY += circlesData.gravity
-    y += velocityY
-    if (y + radius > circlesData.canvasHeight) {
-      y = circlesData.canvasHeight - radius
+    velocityY += gravity
+    yPos += velocityY
+    if (yPos + radius > canvasHeight) {
+      yPos = canvasHeight - radius
       velocityY *= -0.8
     }
     // Move circles horizontally based on the direction
-    if (isMoving && y + radius === circlesData.canvasHeight) {
-      x += xDelta
-      if (x + radius >= circlesData.canvasWidth) {
+    if (isMoving && yPos + radius === canvasHeight) {
+      xPos += xDelta
+      if (xPos + radius >= canvasWidth) {
         isMoving = false
         createAudio()
       }
     } else if (!isMoving) {
-      x -= xDelta
-      if (x - radius <= 0) {
+      xPos -= xDelta
+      if (xPos - radius <= 0) {
         isMoving = true
         createAudio()
       }
@@ -62,12 +82,12 @@ const createCircle = (x, y, radius, color) => {
     const mouseX = e.clientX
     const mouseY = e.clientY
     const distance = Math.sqrt(
-      Math.pow(mouseX - x, 2) + Math.pow(mouseY - y, 2)
+      Math.pow(mouseX - xPos, 2) + Math.pow(mouseY - yPos, 2)
     )
     if (distance <= radius) {
       isCircleClicked = true
       canvas.removeEventListener("click", removeCircle)
-      circlesData.circles = circlesData.circles.filter(
+      clonedCirclesData.circles = clonedCirclesData.circles.filter(
         (circle) => circle !== circleObj
       )
     }
@@ -78,26 +98,28 @@ const createCircle = (x, y, radius, color) => {
 }
 const animate = () => {
   requestAnimationFrame(animate)
-  ctx.clearRect(0, 0, circlesData.canvasWidth, circlesData.canvasHeight)
-  circlesData.circles.forEach((circle) => {
+  ctx.clearRect(
+    0,
+    0,
+    clonedCirclesData.canvasWidth,
+    clonedCirclesData.canvasHeight
+  )
+  clonedCirclesData.circles.forEach((circle) => {
     circle.update()
   })
 }
 const updateCirclesData = (mouseX, mouseY) => {
   const canvasRect = canvas.getBoundingClientRect()
-  circlesData.xPos = mouseX - canvasRect.left
-  circlesData.yPos = mouseY - canvasRect.top
-  circlesData.radius = getRandomValue("radiusValues")
-  circlesData.color = getRandomColor()
+  clonedCirclesData.xPos = mouseX - canvasRect.left
+  clonedCirclesData.yPos = mouseY - canvasRect.top
+  clonedCirclesData.radius = getRandomValue("radiusValues")
+  clonedCirclesData.color = getRandomColor()
 }
 const spawnCircle = (mouseX, mouseY) => {
   updateCirclesData(mouseX, mouseY)
-  const { xPos, yPos, radius, color } = circlesData
-  circlesData.circles.push(createCircle(xPos, yPos, radius, color))
+  clonedCirclesData.circles.push(createCircle())
 }
 const updateCanvasDimensions = () => {
-  circlesData.canvasWidth = window.innerWidth
-  circlesData.canvasHeight = window.innerHeight
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
 }
@@ -107,7 +129,7 @@ const resizeWindow = () => {
 }
 window.addEventListener("resize", resizeWindow)
 canvas.addEventListener("click", (e) => {
-  if (circlesData.circles.length <= 14) {
+  if (clonedCirclesData.circles.length <= 14) {
     spawnCircle(e.clientX, e.clientY)
     createAudio()
   }
