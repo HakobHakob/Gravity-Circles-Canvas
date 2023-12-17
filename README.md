@@ -28,33 +28,26 @@ This project creates a gravity-based animation with circles on an HTML canvas. C
     cd gravity-circles-canvas
 
 1.  **Install Dependencies:**
+   This project might not have external dependencies, but make sure to check for any updates in the future.
 
-        This project might not have external dependencies, but make sure to check for any updates in the future.
+   # If you are using npm
+   npm install
 
-        # If you are using npm
-
-    npm install
-
-# If you are using yarn
-
-yarn
-
-3. **Compile TypeScript:**
-
-Before running the project, compile TypeScript files.
-
-```bash
-   tsc
-```
+   # If you are using yarn
+   yarn
 
 ## Usage
 
-1. **Open index.html:**
-
-    Open the index.html file in your preferred web browser.
+1.  ```bash
+    http-server
+    ```
+    Use the "Available on:" address to run the project or
+    
+    **Open index.html:**
+    Open the index.html file in your preferred web browser using a local development server (like live-server).
    
-    After compiling, make sure that the first line of the typescript_js/script.js file looks like this:
-    import { getRandomValue, getRandomColor, createAudio } from "./util.js"
+    Make sure that the first line of the typescript_js/script.js file looks like this:
+   ... from "./util.js"
 
 3. **Interact with the Animation:**
 
