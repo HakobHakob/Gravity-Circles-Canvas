@@ -30,8 +30,6 @@ const circlesData = {
 const clonedCirclesData = clonedObjectData(circlesData)
 const createCircle = () => {
   let {
-    canvasWidth,
-    canvasHeight,
     xPos,
     yPos,
     gravity,
@@ -54,14 +52,14 @@ const createCircle = () => {
     // Gravity effect
     velocityY += gravity
     yPos += velocityY
-    if (yPos + radius > canvasHeight) {
-      yPos = canvasHeight - radius
+    if (yPos + radius > circlesData.canvasHeight) {
+      yPos = circlesData.canvasHeight - radius
       velocityY *= -0.8
     }
     // Move circles horizontally based on the direction
-    if (isMoving && yPos + radius === canvasHeight) {
+    if (isMoving && yPos + radius === circlesData.canvasHeight) {
       xPos += xDelta
-      if (xPos + radius >= canvasWidth) {
+      if (xPos + radius >= circlesData.canvasWidth) {
         isMoving = false
         createAudio()
       }
@@ -120,6 +118,8 @@ const spawnCircle = (mouseX, mouseY) => {
   clonedCirclesData.circles.push(createCircle())
 }
 const updateCanvasDimensions = () => {
+  circlesData.canvasWidth = window.innerWidth
+  circlesData.canvasHeight = window.innerHeight
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
 }

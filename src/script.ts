@@ -65,8 +65,6 @@ const clonedCirclesData = clonedObjectData(circlesData)
 
 const createCircle = (): Circle => {
   let {
-    canvasWidth,
-    canvasHeight,
     xPos,
     yPos,
     gravity,
@@ -94,16 +92,16 @@ const createCircle = (): Circle => {
 
     yPos += velocityY
 
-    if (yPos + radius > canvasHeight) {
-      yPos = canvasHeight - radius
+    if (yPos + radius > circlesData.canvasHeight) {
+      yPos = circlesData.canvasHeight - radius
       velocityY *= -0.8
     }
 
     // Move circles horizontally based on the direction
-    if (isMoving && yPos + radius === canvasHeight) {
+    if (isMoving && yPos + radius === circlesData.canvasHeight) {
       xPos += xDelta
 
-      if (xPos + radius >= canvasWidth) {
+      if (xPos + radius >= circlesData.canvasWidth) {
         isMoving = false
         createAudio()
       }
@@ -137,7 +135,7 @@ const createCircle = (): Circle => {
       canvas.removeEventListener("click", removeCircle)
 
       clonedCirclesData.circles = clonedCirclesData.circles.filter(
-        (circle: any) => circle !== circleObj
+        (circle: Circle) => circle !== circleObj
       )
     }
   }
@@ -157,7 +155,7 @@ const animate = () => {
     clonedCirclesData.canvasHeight
   )
 
-  clonedCirclesData.circles.forEach((circle: any) => {
+  clonedCirclesData.circles.forEach((circle: Circle) => {
     circle.update()
   })
 }
@@ -176,6 +174,8 @@ const spawnCircle = (mouseX: number, mouseY: number) => {
 }
 
 const updateCanvasDimensions = () => {
+  circlesData.canvasWidth = window.innerWidth
+  circlesData.canvasHeight = window.innerHeight
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
 }
