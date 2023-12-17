@@ -12,10 +12,10 @@ const variablesObj = {
     "https://www.fesliyanstudios.com/play-mp3/3518",
     "https://www.fesliyanstudios.com/play-mp3/5460",
   ],
-  randomVelocityValues:[1,2,3]
+  randomVelocityValues: [1, 2, 3],
 }
 
-export const clonedObjectData = (data: Record<string, any>):any => {
+export const clonedObjectData = (data: Record<string, any>): any => {
   const clonedData: Record<string, any> = {}
   for (const key in data) {
     clonedData[key] = data[key]
