@@ -24,17 +24,22 @@ This project creates a gravity-based animation with circles on an HTML canvas. C
     ```
 
 1.  **Navigate to the Project Directory:**
-
+    ```bash
     cd gravity-circles-canvas
+     ```
 
 1.  **Install Dependencies:**
    This project might not have external dependencies, but make sure to check for any updates in the future.
 
    # If you are using npm
+   ```bash
    npm install
+   ```
 
    # If you are using yarn
+   ```bash
    yarn
+   ```
 
 ## Usage
 
